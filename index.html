@@ -47,13 +47,13 @@
             <!-- right -->
             <div class="header__right">
 
-                <div class="header__input__div">
-                    <input class="header__input" type="search" placeholder="Search">
-                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
-                </div>
+                <form onsubmit="search(event)" class="header__input__div">
+                    <input name="mov" class="header__input" type="type" placeholder="Search">
+                    <button class="header__input__btn"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+                </form>
 
                 <button class="header__btn">
-                  SUBMIT
+                  SUBSCRIBE
                 </button>
                 <a class="header__link" href="#">LOG IN</a>
             </div>
@@ -97,6 +97,8 @@
         </div>
       </section>
 </body>
+
+<!-- javascript links -->
 
 <!-- films -->
 <script src="./js/movies (1).js"></script>
