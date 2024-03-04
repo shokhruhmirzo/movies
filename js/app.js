@@ -5,6 +5,7 @@ let elCategory = document.querySelector('.js__category')
 let elImg = document.querySelector('.white__heart')
 let elOffcanvans = document.querySelector('.offcanvas__list')
 
+
 // icon data 
 let iconDate = []
 dataRender(partMovies)
@@ -22,7 +23,7 @@ function dataRender(data) {
         </a>
         <div class="js__flex">
         <p class="movies__text">${item.movie_year}</p>
-        <i onclick="img('${item.ytid}')" 
+        <i onclick="loveImg('${item.ytid}')" 
         class="${iconDate.find(i => i.ytid == item.ytid) ? "bi bi-heart-fill" : "bi-heart"}"></i>
         </div>
         <h3 class="movies__h3">${item.Title}</h3>
@@ -38,7 +39,6 @@ function fnYear(value) {
         dataRender(partMovies.sort((a, b) => a.movie_year - b.movie_year));
     } else {
         dataRender(partMovies.sort((a, b) => b.movie_year - a.movie_year));
-
     }
 }
 
@@ -68,6 +68,13 @@ function fnCategories(value) {
     dataRender(partMovies.filter((item) => item.Categories == value));
 }
 
+
+var salom = 90
+
+if(salom == 90 ){
+    salom.textContent = 0
+}
+
 function search(e) {
     e.preventDefault()
     let mov = e.target.mov.value
@@ -77,22 +84,23 @@ function search(e) {
     ))
 };
 
-function img(id) {
-    var intialLocalData = []
+var intialLocalData = []
+function loveImg(id) {
     if (window.localStorage.getItem('localMovie')) {
         intialLocalData = JSON.parse(window.localStorage.getItem('localMovie'))
     }
-    if (intialLocalData.find((item) => item.ytid == id)) {
-        let filterDate = intialLocalData.filter((item) => item.ytid != id)
+    if (intialLocalData.find((item)=> item.ytid == id)) {
+        let filterDate = intialLocalData.filter((item)=> item.ytid != id)
         window.localStorage.setItem('localMovie', JSON.stringify(filterDate))
     } else {
-        intialLocalData.push(partMovies.find((item) => item.ytid == id))
+        intialLocalData.push(partMovies.find((item)=> item.ytid == id))
         window.localStorage.setItem('localMovie', JSON.stringify(intialLocalData))
     }
     dataRender(partMovies)
 }
 
 function loveStory() {
+    elOffcanvans.innerHTML = ''
     let getLoveStory = JSON.parse(window.localStorage.getItem('localMovie'))
 
     getLoveStory.forEach((item) => {
@@ -101,7 +109,7 @@ function loveStory() {
         newLi.innerHTML = `
         <img width="40"  height="40" class="mt-3" src="https://i.ytimg.com/vi/${item.ytid}/hqdefault.jpg" alt="">
         <p>${item.Title}</p>
-        <button onclick="shOpenMove('${item.ytid})" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">watch</button>
+        <button onclick="shOpenMove('${item.ytid}')" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">watch</button>
         `
         elOffcanvans.appendChild(newLi)
     })
@@ -112,4 +120,4 @@ function shOpenMove(id) {
      `
         <iframe width="100%" height="300" src="https://www.youtube.com/embed/${id}" title="Ozoda  - Ko&quot;k jiguli  [Official Video 2024]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     `
-}
+}   
