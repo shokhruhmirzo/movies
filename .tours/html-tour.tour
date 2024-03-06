@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "html-tour",
+  "steps": [
+    {
+      "file": "index.html",
+      "description": "create calculator",
+      "line": 138
+    }
+  ]
+}

@@ -3,8 +3,7 @@ let partMovies = movies.slice(0, 99)
 let elList = document.querySelector('.movies__list')
 let elCategory = document.querySelector('.js__category')
 let elImg = document.querySelector('.white__heart')
-let elOffcanvans = document.querySelector('.offcanvas__list')
-
+let elOffcanvans = document.querySelector('.offcanvas__list')       
 
 // icon data 
 let iconDate = []
